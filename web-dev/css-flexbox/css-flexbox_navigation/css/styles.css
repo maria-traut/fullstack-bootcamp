@@ -15,12 +15,18 @@ a {
 ul {
   list-style: none;
   padding: 0;
+  display: flex;
 }
 
 .header {
   padding: 20px;
   color: #252629;
   background-color: #8336ff7b;
+}
+
+.navigation__menu {
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .navigation__link {
