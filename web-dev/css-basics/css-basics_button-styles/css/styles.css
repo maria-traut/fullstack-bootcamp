@@ -31,19 +31,23 @@ button {
 Make sure not to put your code into the comments, because then nothing will happen. */
 
 .button1 {
-  /* Style me! Change my border, set a border radius or try out other styles. :) */
+  border-radius: 50%;
+  border: 10px solid hotpink;
+  color: hotpink;
 }
 
 .button2 {
-  /* Style me! Change my color or background-color, or both! You can experiment with different color formats here, like HEX, RGB, etc. */
+  font-size: 50px;
+  background: hotpink;
+  padding: 50px;
+  border: 50px solid lightsalmon;
 }
 
 .button3 {
-  /* Style me! You can test out changing the font, font size, ...*/
+  font-size: 10px;
+  font-family: "Courier New"
 }
 
 .button4 {
-  /* Style me! Can you add a shadow to this button? Try playing around with shadow properties - you can even change the shadow color, size, and more. */
+  box-shadow: rgba(253, 81, 2, 0.4) 0px 7px 10px 0px;#
 }
-
-/* Feel free to play around with other properties, too. */
