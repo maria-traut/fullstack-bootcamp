@@ -1,0 +1,16 @@
+.card__bookmark {
+  width: 150px;
+  height: 150px;
+  border: 2px solid var(--main-bg);
+  background-color: var(--main-bg);
+  font-size: 4em;
+  padding: 6px 12px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+  right: -15px;
+  top: -20px;
+  justify-content: space-between;
+}
+
+button:hover {
+  background-color: orangered;
+}
