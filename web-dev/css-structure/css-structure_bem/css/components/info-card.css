@@ -5,41 +5,44 @@
   border-radius: var(--rounded-sm);
 }
 
-.info-card h2 {
+.info-card__headline {
   color: var(--primary);
 }
 
-.info-card ul {
+.info-card .info-card__classes-list {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   line-height: 1.5;
 }
 
-.info-card ul > li .list-title {
+.info-card
+  .info-card__classes-list
+  > .info-card__list-items
+  .info-card__item-title {
   font-weight: bold;
 }
 
-.info-card ul .text-highlighted {
+.info-card__classes-list .info-card__text-highlight {
   color: var(--text-highlight);
   background-color: var(--background-highlight);
   padding: 3px 5px;
   border-radius: var(--rounded-sm);
 }
 
-.info-card > .buttons {
+.info-card > .info-card__buttons {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
 }
 
-.info-card > .buttons > button {
+.info-card > .info-card__buttons > .info-card__buttons-got-it {
   padding: 1rem 2rem;
   border-radius: var(--rounded-lg);
   font-size: 1rem;
 }
 
-button.primary {
+.info-card__buttons-got-it {
   background-color: var(--primary);
   color: var(--primary-text);
 }
