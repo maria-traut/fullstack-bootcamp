@@ -73,13 +73,13 @@ h1 {
   height: 100px;
 }
 
-@media (min-width: 600px) {
+@media screen and (min-width: 600px) {
  .box--two {
   width: 200px;
   }
 }
 
-@media (min-width: 1200px) {
+@media screen and (min-width: 1200px) {
   .box--two {
   width: 400px;
   }
@@ -92,7 +92,7 @@ h1 {
   height: 250px;
 }
 
-@media (orientation: landscape) {
+@media screen and (orientation: landscape) {
   .box--three {
    width: 250px;
    height: 50px;
@@ -106,9 +106,9 @@ h1 {
   height: 100px;
 }
 
-@media (prefers-color-scheme: dark) {
+@media screen and (prefers-color-scheme: dark) {
   .box--four {
-    background-color: darkblue;
+    background-color: white;
   }
 }
 
@@ -118,11 +118,4 @@ h1 {
 
 .box--five img {
   width: 100%;
-}
-
-@media (min-width: 600px), (min-width: 1200px) {
-  .box--five img {
-  img src="./img/cat_medium.jpg" alt="A bigger cat";
-  img src="./img/cat_large.jpg" alt="A lion";
-  }
 }
