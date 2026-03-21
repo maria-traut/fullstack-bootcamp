@@ -11,6 +11,12 @@ function printSquare(number) {
   console.log(square);
 }
 
+/* oder
+function printSquare(number) {
+  console.log(number * number);
+}
+*/
+
 printSquare(3);
 printSquare(5);
 
@@ -25,6 +31,12 @@ function printCircumference(radius) {
   circumference = 2 * Math.PI * radius;
   console.log(circumference);
 }
+
+/* oder
+function printCircumference(radius) {
+  console.log(2 * Math.PI * radius);
+}
+*/
 
 printCircumference(4);
 printCircumference(6);
@@ -43,6 +55,12 @@ function printRectangleArea(width, length) {
   area = width * length;
   console.log("The area of the rectangle ist " + area + ".");
 }
+
+/* oder
+function printRectangleArea(width, length) {
+  console.log("The area of the rectangle ist " + width * length + ".");
+}
+*/
 
 printRectangleArea(5, 7);
 printRectangleArea(3, 4);

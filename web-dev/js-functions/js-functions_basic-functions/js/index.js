@@ -22,12 +22,13 @@ Title: The Lord of the Javascript
 Author: Mario
 Rating: 4.2
 Sales: 120
-
+*/
 console.log(bookTitle);
 console.log(bookAuthor);
 console.log(bookRating);
 console.log(bookCopiesSold);
 
+/*
 Then:
 - Increase the number of sales.
 - Update the book's rating.
@@ -64,14 +65,11 @@ function logBookData() {
   console.log("Sold copies: " + bookCopiesSold);
 }
 
-logBookData(bookTitle);
-logBookData(bookAuthor);
-logBookData(bookRating);
-logBookData(bookCopiesSold);
+logBookData();
 
 bookCopiesSold = bookCopiesSold + 500;
-console.log("Sold copies: " + bookCopiesSold);
+logBookData();
 
 bookCopiesSold = bookCopiesSold + 500;
-console.log("Sold copies: " + bookCopiesSold);
+logBookData();
 // --^-- write your code here --^--
