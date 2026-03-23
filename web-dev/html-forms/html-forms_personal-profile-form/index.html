@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -9,5 +9,48 @@
     <title>Personal Profile Form</title>
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
-  <body></body>
+  <body>
+    <h1 id="title">Create your Personal Profile</h1>
+<fieldset class="global">
+<section class="personal">
+    <p id="description__personal">
+      We want to get to know you! Please enter your personal information.
+    </p>
+  <form aria-labelledby="title" ariad-describedby="description__personal">
+  <fieldset>
+      <legend>
+          Personal information</legend>
+          <label for="first-name">First Name:</label>
+          <input id="first-name" type="text" />
+          <label for="last-name">Last Name:</label>
+          <input id="last-name" type="text" />
+          <label for="birthday__date">Your Birthday:</label>
+          <input id="birthday__date" type="date" />
+        </form>
+  </fieldset>
+</section>
+<section class="further">
+    <p id="description__further">
+      Can you tell us a little bit more? We want to annoy you with unwanted ads.
+    </p>
+
+    <form aria-labelledby="title" ariad-describedby="description__further">
+  <fieldset>
+    <legend>
+          Further Information</legend>
+          <label for="favourite-color">Favourite Color:</label>
+          <input id="color" type="color">
+          <label for="favourite-pet">What's your favourite pet?</label>
+    <select id="favourite-pet">
+          <option value="">--Please choose an option.--</option>
+          <option value="cat">Cat</option>
+          <option value="dog">Dog</option>
+          <option value="other">Other</option>
+    </select>
+    </form>
+  </fieldset>
+</section>
+    <button type="submit">Submit</button>
+    </fieldset>
+  </body>
 </html>
