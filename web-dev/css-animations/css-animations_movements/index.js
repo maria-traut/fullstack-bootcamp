@@ -8,7 +8,20 @@ const colors = ["#e0f7fa", "#ffe0b2", "#c8e6c9", "#ffccbc", "#d1c4e9"]; // Light
 let currentColorIndex = 0;
 
 changeColorButton.addEventListener("click", () => {
-  // Add your solution below
+   // Add your solution below
+  colorChangeCard.classList.add("colorChangeCard");
+  0% {
+    colors: 0;
+  }
+  25% {
+    colors: 1;
+  }
+  50% {
+    colors: 2;
+  }
+  100% {
+    colors: 4;
+  } 
 });
 
 /*  -----------------------------------------------------------
@@ -22,12 +35,15 @@ changeColorButton.addEventListener("click", () => {
             Challenge 3: Loading Spinner Toggle
 ---------------------------------------------------------------- */
 const toggleLoaderButton = document.querySelector(
-  "[data-js=toggleLoaderButton]"
+  "[data-js=toggleLoaderButton]",
 );
 const loaderContainer = document.querySelector("[data-js=loaderContainer]");
 let loaderActive = false;
 
 toggleLoaderButton.addEventListener("click", () => {
+  if (loaderActive === true) {
+    
+  }
   // Add your solution below
 });
 
