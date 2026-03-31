@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const cards = [
   {
     question:
@@ -206,6 +207,10 @@ function App() {
 }
 
 // The render function renders the app to the DOM
+=======
+import { App } from "./components/App/App.js";
+
+>>>>>>> e0b649b979d63f5e18b8c467b6f25b60d0a7d480
 function render() {
   const root = document.querySelector("#root");
   root.append(App());
