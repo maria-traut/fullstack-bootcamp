@@ -8,11 +8,28 @@ queryInput.addEventListener("input", (event) => {
   container.innerHTML = "";
 
   const searchString = event.target.value;
+  console.log("searchString:", searchString);
 
-  const foundCountry = null;
-
+  //Task 1
+  const foundCountry = countries.find((country) =>
+    country.name.startsWith(searchString),
+  );
   if (foundCountry) {
     const countryElement = Country(foundCountry);
     container.append(countryElement);
+  }
+
+  //Task 2
+  const foundCountries = countries.filter((country) =>
+    country.name.toUpperCase().startsWith(searchString.toUpperCase()),
+  );
+
+  console.log("foundCountries: ", foundCountries);
+
+  if (foundCountries.length > 0) {
+    foundCountries.forEach((country) => {
+      const countryElement = Country(country);
+      container.append(countryElement);
+    });
   }
 });

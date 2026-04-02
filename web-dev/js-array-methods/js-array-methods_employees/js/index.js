@@ -6,28 +6,30 @@ import { employees } from "../utils/db.js";
 // Check the browser preview and conduct some tests to ensure it works correctly.
 
 function findByLastName(employees, lastName) {
-  return null;
+  return employees.find((employee) => employee.lastName === lastName);
 
   // Exercise 2:
   // The same as above, but now you are searching by the 'id'.
 }
 function findById(employees, id) {
-  return null;
+  return employees.find((employee) => employee.id === id);
 }
 
 // Exercise 3:
 // This time you want to find an employee who lives in a city that includes a specific substring.
 
 function findByCitySubString(employees, string) {
-  return null;
+  return employees.find((employee) => employee.city.includes(string));
 }
 
 // Bonus:
-// You want to find the first employee whose profession includes a specific substring
+// You want to find any employee whose profession includes a specific substring
 // AND who is older than a specific age
 
 function findByProfessionSubStringAndAge(employees, string, age) {
-  return null;
+  return employees.find(
+    (employee) => employee.profession.includes(string) && employee.age > age,
+  );
 }
 
 // ------------------------------------------------------------------------------
@@ -82,7 +84,7 @@ form4.addEventListener("submit", (event) => {
   const result = findByProfessionSubStringAndAge(
     employees,
     event.target.exercise4.value,
-    event.target.exercise4b.value
+    event.target.exercise4b.value,
   );
   if (result) {
     exercise4.append(createCard(result));
