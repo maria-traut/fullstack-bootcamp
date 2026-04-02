@@ -15,10 +15,19 @@ const operations = {
   },
 };
 
+try {
+  output.innerText = operations[operation](firstNumber, secondNumber);
+  document.querySelector(".error").innerText = "";
+} catch (error) {
+  console.log(error);
+  console.error(error);
+  output.innerText = "❌";
+  document.querySelector(".error").innerText = error.message;
+}
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   const firstNumber = Number(event.target.firstNumber.value);
   const secondNumber = Number(event.target.secondNumber.value);
   const operation = event.target.operation.value;
-  output.innerText = operations[operation](firstNumber, secondNumber);
 });

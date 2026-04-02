@@ -10,6 +10,14 @@ async function fetchUserData(url) {
       headers: { "x-api-key": "reqres_c0aaf46c1fa2400e8fb8669bacd63171" },
     });
 
+    const contentType = response.headers.get("content-type");
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    } else if (!contentType.includes("application/json")) {
+      throw new Error("Expected JSON response but received: " + contentType);
+    }
+
     return await response.json();
   } catch (error) {
     return { error: error.message };
