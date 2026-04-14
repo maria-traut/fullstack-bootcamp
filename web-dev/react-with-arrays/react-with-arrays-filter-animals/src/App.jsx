@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles.css";
+import { useState } from "react";
 
 const animals = [
   { id: "1", name: "Dog", habitat: "Domestic Animal", emoji: "🐕" },
@@ -30,5 +31,25 @@ const animals = [
 const habitats = ["Mountains", "Ocean", "Forest", "Domestic Animal"];
 
 export default function App() {
-  return <h1>Animal Filter</h1>;
+  const [specialHabitat, setSpecialHabitat] = useState("");
+  function handleClickButton() {
+    setSpecialHabitat(!specialHabitat);
+  }
+
+  const filteredAnimals = animals.filter(
+    (animal) => animal.habitat === specialHabitat,
+  );
+  return (
+    <>
+      <h1>Animal Filter</h1>
+      {habitats.map((habitat) => (
+        <button
+          type="button"
+          key={habitat}
+          className={"button"}
+          onClick={handleClickButton}
+        ></button>
+      ))}
+    </>
+  );
 }
