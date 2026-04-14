@@ -6,6 +6,10 @@ import { useState } from "react";
 export default function FavoriteButton() {
   const [isFavorite, setIsFavorite] = useState(false);
 
+  // function handleClickButton() {
+  // setIsFavorite(!isFavorite);
+  // }
+
   return (
     <button
       className="favorite-button"
@@ -13,6 +17,7 @@ export default function FavoriteButton() {
         //console.log("favorite button clicked");
         setIsFavorite(!isFavorite);
       }}
+      //onClick={handleClickButton};
       aria-label="favorite"
     >
       {isFavorite ? <StarFilled /> : <Star />}
