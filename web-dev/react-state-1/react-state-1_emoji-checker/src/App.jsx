@@ -9,7 +9,8 @@ export default function App() {
   function handleClick(emoji) {
     console.log(emoji);
     console.log(code);
-    setCode(code + emoji);
+    let passcodeInput = code + emoji;
+    setCode(passcodeInput);
   }
 
   return (
