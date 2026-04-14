@@ -6,7 +6,6 @@ export default function App() {
 
   function handleClick() {
     setIsActive(!isActive);
-
     console.log(isActive);
   }
 
