@@ -22,6 +22,10 @@ body {
   cursor: pointer;
 }
 
+.highlight {
+  background-color: lightblue;
+}
+
 ul {
   display: flex;
   gap: 1rem;

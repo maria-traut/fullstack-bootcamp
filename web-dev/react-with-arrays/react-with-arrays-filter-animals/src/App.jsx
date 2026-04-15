@@ -1,4 +1,3 @@
-import React from "react";
 import "./styles.css";
 import { useState } from "react";
 
@@ -31,14 +30,16 @@ const animals = [
 const habitats = ["Mountains", "Ocean", "Forest", "Domestic Animal"];
 
 export default function App() {
-  const [specialHabitat, setSpecialHabitat] = useState("");
-  function handleClickButton() {
-    setSpecialHabitat(!specialHabitat);
-  }
-
+  const [selectedHabitat, setSelectedHabitat] = useState("");
   const filteredAnimals = animals.filter(
-    (animal) => animal.habitat === specialHabitat,
+    (animal) => animal.habitat === selectedHabitat,
   );
+
+  // not necessary: const [filteredAnimals, setFilteredAnimals] = useState([]);
+
+  function handleButtonClick(habitat) {
+    setSelectedHabitat(habitat);
+  }
   return (
     <>
       <h1>Animal Filter</h1>
@@ -46,10 +47,21 @@ export default function App() {
         <button
           type="button"
           key={habitat}
-          className={"button"}
-          onClick={handleClickButton}
-        ></button>
+          className={`button ${habitat === selectedHabitat ? "highlight" : ""}`}
+          // not working: onClick={handleButtonClick}
+          onClick={() => handleButtonClick(habitat)}
+          // solution (shorter + without additional function line 40): onClick={() => setSelectedHabitat(habitat)}
+        >
+          {habitat}
+        </button>
       ))}
+      <ul>
+        {filteredAnimals.map((animal) => (
+          <li key={animal.id}>
+            {animal.name} <span>{animal.emoji}</span>
+          </li>
+        ))}
+      </ul>
     </>
   );
 }
