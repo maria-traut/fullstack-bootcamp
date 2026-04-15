@@ -3,17 +3,17 @@ import Card from "./components/Card";
 export default function App() {
   const fruits = [
     { id: 0, name: "🍌 banana", color: "yellow" },
-    { id: 2, name: "🍓 strawberry", color: "salmon" },
+    { id: 2, name: "🍓 strawberry", color: "red" },
     { id: 1, name: "🍍 pineapple", color: "yellow" },
-    { id: 3, name: "🫐 blueberry", color: "violet" },
-    { id: 4, name: "🍐 pear", color: "lightyellow" },
-    { id: 5, name: "🍉 watermelon", color: "lightgreen" },
+    { id: 3, name: "🫐 blueberry", color: "purple" },
+    { id: 4, name: "🍐 pear", color: "yellow" },
+    { id: 5, name: "🍉 watermelon", color: "green" },
   ];
 
   return (
     <div className="app">
       {fruits.map((fruit) => (
-        <Card key={fruits.id} color={fruit.color} name={fruit.name} />
+        <Card key={fruit.id} backgroundColor={fruit.color} name={fruit.name} />
       ))}
     </div>
   );
