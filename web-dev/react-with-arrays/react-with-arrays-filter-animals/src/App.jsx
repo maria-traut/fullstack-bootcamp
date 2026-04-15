@@ -1,5 +1,5 @@
-import React from "react";
 import "./styles.css";
+import { useState } from "react";
 
 const animals = [
   { id: "1", name: "Dog", habitat: "Domestic Animal", emoji: "🐕" },
@@ -30,5 +30,38 @@ const animals = [
 const habitats = ["Mountains", "Ocean", "Forest", "Domestic Animal"];
 
 export default function App() {
-  return <h1>Animal Filter</h1>;
+  const [selectedHabitat, setSelectedHabitat] = useState("");
+  const filteredAnimals = animals.filter(
+    (animal) => animal.habitat === selectedHabitat,
+  );
+
+  // not necessary: const [filteredAnimals, setFilteredAnimals] = useState([]);
+
+  function handleButtonClick(habitat) {
+    setSelectedHabitat(habitat);
+  }
+  return (
+    <>
+      <h1>Animal Filter</h1>
+      {habitats.map((habitat) => (
+        <button
+          type="button"
+          key={habitat}
+          className={`button ${habitat === selectedHabitat ? "highlight" : ""}`}
+          // not working: onClick={handleButtonClick}
+          onClick={() => handleButtonClick(habitat)}
+          // solution (shorter + without additional function line 40): onClick={() => setSelectedHabitat(habitat)}
+        >
+          {habitat}
+        </button>
+      ))}
+      <ul>
+        {filteredAnimals.map((animal) => (
+          <li key={animal.id}>
+            {animal.name} <span>{animal.emoji}</span>
+          </li>
+        ))}
+      </ul>
+    </>
+  );
 }
