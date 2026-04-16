@@ -1,4 +1,4 @@
-export default function Counter(onIncrement, onDecrement) {
+export default function Counter({ onIncrement, onDecrement }) {
   return (
     <>
       <h2>How many people would you like to visit us with?</h2>

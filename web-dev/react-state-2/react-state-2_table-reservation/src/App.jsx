@@ -9,15 +9,11 @@ export default function App() {
 
   function handleIncrement() {
     setPeople(people + 1);
-    // return <Counter people={people} onIncrement={handleIncrement} />;
   }
 
   function handleDecrement() {
     setPeople(people - 1);
-    // return <Counter people={people} onDecrement={handleDecrement} />;
   }
-
-  // Wo wird der aktuelle people.value gestored???
 
   return (
     <div className="container">
