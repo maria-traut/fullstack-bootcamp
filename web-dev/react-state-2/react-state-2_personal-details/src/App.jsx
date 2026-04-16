@@ -8,10 +8,10 @@ export default function App() {
       <Form />
       <h2>Your submitted details:</h2>
       <p>
-        Name: <span className="output">John Doe</span>
+        Name: <span className="output">{name}</span>
       </p>
       <p>
-        Email: <span className="output">John@Doe.com</span>
+        Email: <span className="output">{email}</span>
       </p>
     </div>
   );
