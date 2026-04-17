@@ -6,7 +6,17 @@ export default function StatusCheck() {
   const statusIcon = "⁉️";
   // Something needs to change here…
   // ↙️
-  function handleCheckApiStatus() {
+  async function handleCheckApiStatus() {
+    try {
+      const response = await fetch(apiStatusUrl);
+      const data = await response.json();
+      console.log(data);
+     // return statusIcon;
+    } catch (error) {
+      console.log(error);
+    }
+    }
+// return statusInformation;
     /**
      * Hint 1:
      * Use the `fetch()` function to send a request to `apiStatusUrl`.
