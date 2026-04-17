@@ -39,10 +39,11 @@ const initialEntries = [
 function App() {
   const [entries, setEntries] = useState(initialEntries);
   const [filter, setFilter] = useState("all");
+  const [showFavorites, setShowFavorites] = useState("");
   const favoriteEntries = entries.filter((entry) => entry.isFavorite);
 
   function handleShowFavoriteEntries() {
-    setFilter("all");
+    setFilter("favorites");
   }
 
   function handleShowAllEntries() {
