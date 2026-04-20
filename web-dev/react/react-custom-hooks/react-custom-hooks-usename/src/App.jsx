@@ -3,6 +3,7 @@ import "./styles.css";
 
 export default function App() {
   const [name, setFirstName, setLastName] = useName();
+
   return (
     <>
       <form>
@@ -10,13 +11,17 @@ export default function App() {
           type="text"
           placeholder="first name"
           value={null}
-          onChange={(event) => {}}
+          onChange={(event) => {
+            setFirstName(event.target.value);
+          }}
         />
         <input
           type="text"
           placeholder="last name"
           value={null}
-          onChange={(event) => {}}
+          onChange={(event) => {
+            setLastName(event.target.value);
+          }}
         />
       </form>
       <h2>The full name:</h2>
