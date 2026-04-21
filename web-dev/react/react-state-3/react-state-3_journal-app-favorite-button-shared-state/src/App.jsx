@@ -55,9 +55,9 @@ function App() {
 
   function handleToggleFavorite(id) {
     setEntries(
-      entries.map((entry) => {
-        entry.id === id ? { ...entry, isFavorite: !entry.isFavorite } : entry;
-      }),
+      entries.map((entry) =>
+        entry.id === id ? { ...entry, isFavorite: !entry.isFavorite } : entry,
+      ),
     );
   }
 
