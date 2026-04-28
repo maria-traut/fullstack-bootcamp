@@ -62,12 +62,23 @@ const words2 = [
 // Output: value der totalLength/array.length
 
 function averageWordLength(words) {
+  if (words.length === 0) return null;
   let totalWordLength = 0;
   words.forEach((word) => {
     totalWordLength = totalWordLength + word.length;
   });
   let averageWordLength = totalWordLength / words.length;
   return averageWordLength;
+  /* alternative 1:
+  if (words.length === 0) return 0;
+  const total = words.reduce((sum, word) => sum + word.length, 0);
+  return total / words.length;
+  alternative 2:
+    if (words.length === 0) return null;
+  const joinedWords = words.join("");
+  const charAverage = joinedWords.length / words.length;
+  return charAverage;
+  */
 }
 
 // Unique arrays - return an array without duplicates
@@ -172,15 +183,33 @@ const mixedArray = [
 function sum(array) {
   let sum = 0;
   array.forEach((element) => {
-    if (typeof element === "number") {
-      sum = sum + element;
-    } else if (typeof element === "string") {
+    if (typeof element === "string") {
       sum = sum + element.length;
     } else if (typeof element === "boolean") {
-      sum = sum + element ? 1 : 0;
+      element ? sum++ : null;
+    } else {
+      sum = sum + element;
     }
   });
   return sum;
+  /*
+  another way to solve it with simple for loop:
+  function sum(array) {
+    let count = 0;
+    for (let i = 0; i < array.length; i++) {
+      if (typeof array[i] === "string") {
+        count += array[i].length;
+      } else if (typeof array[i] === "boolean") {
+        if(array[i]) {
+          count++;
+        }
+      } else {
+        count += array[i];
+      }
+    }
+    return count;
+  }
+  */
 }
 
 // Bonus: Write a function that calculates the greatest product of four
@@ -252,7 +281,31 @@ const matrix = [
 ];
 
 function greatestProduct(matrix) {
-  // TODO:
+  let maxProduct = 0;
+
+  // Check horizontally
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length - 3; j++) {
+      const product =
+        matrix[i][j] * matrix[i][j + 1] * matrix[i][j + 2] * matrix[i][j + 3];
+      if (product > maxProduct) {
+        maxProduct = product;
+      }
+    }
+  }
+
+  // Check vertically
+  for (let i = 0; i < matrix.length - 3; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      const product =
+        matrix[i][j] * matrix[i + 1][j] * matrix[i + 2][j] * matrix[i + 3][j];
+      if (product > maxProduct) {
+        maxProduct = product;
+      }
+    }
+  }
+
+  return maxProduct;
 }
 
 module.exports = {
