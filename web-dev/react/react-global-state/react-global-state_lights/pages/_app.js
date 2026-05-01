@@ -26,10 +26,25 @@ export default function App({ Component, pageProps }) {
       }),
     );
   }
+
+  const lightsOn = lights.filter((light) => light.isOn === true);
+  // console.log(lights);
+  // console.log(lightsOn);
+
+  const lightsOnSum = lightsOn.length;
+  //console.log(lightsOnSum);
+
+  // short: const lightsOnSum = lights.filter(light => light.isOn).length;
+
   return (
-    <Layout>
+    <Layout lightsOnSum={lightsOnSum}>
       <GlobalStyle />
-      <Component {...pageProps} lights={lights} handleToggle={handleToggle} />
+      <Component
+        {...pageProps}
+        lights={lights}
+        handleToggle={handleToggle}
+        lightsOnSum={lightsOnSum}
+      />
     </Layout>
   );
 }
