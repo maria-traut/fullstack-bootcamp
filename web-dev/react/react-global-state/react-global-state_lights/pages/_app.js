@@ -27,6 +27,22 @@ export default function App({ Component, pageProps }) {
     );
   }
 
+  function handleTurnLightsOff() {
+    setLights((lights) =>
+      lights.map((light) => {
+        return { ...light, isOn: false };
+      }),
+    );
+  }
+
+  function handleTurnLightsOn() {
+    setLights((lights) =>
+      lights.map((light) => {
+        return { ...light, isOn: true };
+      }),
+    );
+  }
+
   const lightsOn = lights.filter((light) => light.isOn === true);
   // console.log(lights);
   // console.log(lightsOn);
@@ -44,6 +60,8 @@ export default function App({ Component, pageProps }) {
         lights={lights}
         handleToggle={handleToggle}
         lightsOnSum={lightsOnSum}
+        handleTurnLightsOff={handleTurnLightsOff}
+        handleTurnLightsOn={handleTurnLightsOn}
       />
     </Layout>
   );
