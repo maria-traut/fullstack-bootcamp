@@ -27,18 +27,18 @@ export default function App({ Component, pageProps }) {
     );
   }
 
-  function handleTurnLightsOff() {
-    setLights((lights) =>
-      lights.map((light) => {
-        return { ...light, isOn: false };
-      }),
-    );
-  }
-
   function handleTurnLightsOn() {
     setLights((lights) =>
       lights.map((light) => {
         return { ...light, isOn: true };
+      }),
+    );
+  }
+
+  function handleTurnLightsOff() {
+    setLights((lights) =>
+      lights.map((light) => {
+        return { ...light, isOn: false };
       }),
     );
   }
@@ -53,7 +53,7 @@ export default function App({ Component, pageProps }) {
   // short: const lightsOnSum = lights.filter(light => light.isOn).length;
 
   return (
-    <Layout lightsOnSum={lightsOnSum}>
+    <Layout lightsOnSum={lightsOnSum} isDimmed={lightsOnSum === 0}>
       <GlobalStyle />
       <Component
         {...pageProps}

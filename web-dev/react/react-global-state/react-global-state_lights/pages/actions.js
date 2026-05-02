@@ -5,6 +5,7 @@ export default function Actions({
   lights,
   handleTurnLightsOff,
   handleTurnLightsOn,
+  lightsOnSum,
 }) {
   return (
     <>
@@ -14,6 +15,7 @@ export default function Actions({
         lights={lights}
         onTurnLightsOff={handleTurnLightsOff}
         onTurnLightsOn={handleTurnLightsOn}
+        lightsOnSum={lightsOnSum}
       />
     </>
   );
