@@ -26,10 +26,43 @@ export default function App({ Component, pageProps }) {
       }),
     );
   }
+
+  function handleTurnLightsOn() {
+    setLights((lights) =>
+      lights.map((light) => {
+        return { ...light, isOn: true };
+      }),
+    );
+  }
+
+  function handleTurnLightsOff() {
+    setLights((lights) =>
+      lights.map((light) => {
+        return { ...light, isOn: false };
+      }),
+    );
+  }
+
+  const lightsOn = lights.filter((light) => light.isOn === true);
+  // console.log(lights);
+  // console.log(lightsOn);
+
+  const lightsOnSum = lightsOn.length;
+  //console.log(lightsOnSum);
+
+  // short: const lightsOnSum = lights.filter(light => light.isOn).length;
+
   return (
-    <Layout>
+    <Layout lightsOnSum={lightsOnSum} isDimmed={lightsOnSum === 0}>
       <GlobalStyle />
-      <Component {...pageProps} lights={lights} handleToggle={handleToggle} />
+      <Component
+        {...pageProps}
+        lights={lights}
+        handleToggle={handleToggle}
+        lightsOnSum={lightsOnSum}
+        handleTurnLightsOff={handleTurnLightsOff}
+        handleTurnLightsOn={handleTurnLightsOn}
+      />
     </Layout>
   );
 }

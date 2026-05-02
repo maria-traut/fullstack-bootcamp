@@ -7,22 +7,25 @@ const StyledQuickActions = styled.div`
   gap: 16px;
 `;
 
-export default function QuickActions() {
+export default function QuickActions({
+  onTurnLightsOff,
+  onTurnLightsOn,
+  lightsOnSum,
+  lights,
+}) {
   return (
     <StyledQuickActions>
       <Button
         type="button"
-        onClick={() => {
-          console.log("Turn all lights off");
-        }}
+        onClick={onTurnLightsOff}
+        disabled={lightsOnSum === 0}
       >
         Turn all lights off
       </Button>
       <Button
         type="button"
-        onClick={() => {
-          console.log("Turn all lights on");
-        }}
+        onClick={onTurnLightsOn}
+        disabled={lightsOnSum === lights.length}
       >
         Turn all lights on
       </Button>
