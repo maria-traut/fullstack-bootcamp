@@ -10,42 +10,64 @@ jest.mock("next/router", () => ({
 
 test("renders two input fields and a button", () => {
   render(<GameForm />);
-  const input1 = screen.getByLabelText("Name of game");
-  expect(input1).toBeInTheDocument();
-  const input2 = screen.getByLabelText("Player names, separated by comma");
-  expect(input2).toBeInTheDocument();
+  const gameNameInput = screen.getByLabelText("Name of game");
+  expect(gameNameInput).toBeInTheDocument();
+  const playerNameInput = screen.getByLabelText(
+    "Player names, separated by comma",
+  );
+  expect(playerNameInput).toBeInTheDocument();
   const button = screen.getByRole("button", { name: "Create game" });
   expect(button).toBeInTheDocument();
 });
 
 test("renders a form with the accessible name 'Create a new game'", () => {
   render(<GameForm />);
-  const formHeading = screen.getByRole("heading", {
+  const form = screen.getByRole("form", {
     name: "Create a new game",
   });
-  expect(formHeading).toBeInTheDocument();
+  expect(form).toBeInTheDocument();
 });
 
 test("submits the correct form data when every field is filled out", async () => {
-  render(<GameForm />);
+  const handleCreateGame = jest.fn();
   const user = userEvent.setup();
-  const input1 = screen.getByLabelText("Name of game");
-  await user.type(input1, "Frogger");
-  const input2 = screen.getByLabelText("Player names, separated by comma");
-  await user.type(input2, "Pia, Ina");
+  render(<GameForm onCreateGame={handleCreateGame} />);
+
+  const gameNameInput = screen.getByLabelText("Name of game");
+  const playerNameInput = screen.getByLabelText(
+    "Player names, separated by comma",
+  );
   const button = screen.getByRole("button", { name: "Create game" });
+
+  await user.type(gameNameInput, "Frogger");
+  await user.type(playerNameInput, "Pia, Ina");
   await user.click(button);
+  expect(handleCreateGame).toHaveBeenCalledWith({
+    playerNames: ["Pia", "Ina"],
+    nameOfGame: "Frogger",
+  });
 });
 
 test("does not submit form if one input field is left empty", async () => {
-  render(<GameForm />);
+  const handleCreateGame = jest.fn();
   const user = userEvent.setup();
-  const input1 = screen.getByLabelText("Name of game");
-  await user.type(input1, "Frogger");
-  expect(input1).toBeInTheDocument();
-  const input2 = screen.getByLabelText("Player names, separated by comma");
-  await user.type(input2, "Pia, Ina");
-  expect(input2).not.toBeInTheDocument();
+  render(<GameForm onCreateGame={handleCreateGame} />);
+
+  const gameNameInput = screen.getByLabelText("Name of game");
+
+  const playerNameInput = screen.getByLabelText(
+    "Player names, separated by comma",
+  );
+
   const button = screen.getByRole("button", { name: "Create game" });
+
+  await user.type(playerNameInput, "Pia, Ina");
+
   await user.click(button);
+  expect(handleCreateGame).not.toHaveBeenCalled();
+
+  await user.type(gameNameInput, "Frogger");
+  await user.clear(playerNameInput);
+  await user.click(button);
+  expect(handleCreateGame).not.toHaveBeenCalled();
 });
