@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import HistoryEntry from ".";
 
-test.skip("renders name of game and 'show score' button only", () => {
+test("renders name of game and 'show score' button only", () => {
   render(
     <HistoryEntry
       nameOfGame="Dodelido"
@@ -10,7 +10,7 @@ test.skip("renders name of game and 'show score' button only", () => {
         { name: "John", score: 2, id: "xyz" },
         { name: "Jane", score: 1, id: "abc" },
       ]}
-    />
+    />,
   );
 
   const nameOfGame = screen.getByText(/dodelido/i);
@@ -20,7 +20,7 @@ test.skip("renders name of game and 'show score' button only", () => {
   expect(button).toBeInTheDocument();
 });
 
-test.skip("renders player names and scores after button click", async () => {
+test("renders player names and scores after button click", async () => {
   render(
     <HistoryEntry
       nameOfGame="Dodelido"
@@ -28,7 +28,7 @@ test.skip("renders player names and scores after button click", async () => {
         { name: "John", score: 2, id: "xyz" },
         { name: "Jane", score: 1, id: "abc" },
       ]}
-    />
+    />,
   );
 
   const noPlayer1 = screen.queryByText(/john/i);
