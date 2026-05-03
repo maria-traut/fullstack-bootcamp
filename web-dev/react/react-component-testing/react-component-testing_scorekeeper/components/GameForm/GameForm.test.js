@@ -49,14 +49,25 @@ test("submits the correct form data when every field is filled out", async () =>
 });
 
 test("does not submit form if one input field is left empty", async () => {
-  render(<GameForm />);
+  const handleCreateGame = jest.fn();
   const user = userEvent.setup();
-  const input1 = screen.getByLabelText("Name of game");
-  await user.type(input1, "Frogger");
-  expect(input1).toBeInTheDocument();
-  const input2 = screen.getByLabelText("Player names, separated by comma");
-  await user.type(input2, "Pia, Ina");
-  expect(input2).not.toBeInTheDocument();
+  render(<GameForm onCreateGame={handleCreateGame} />);
+
+  const gameNameInput = screen.getByLabelText("Name of game");
+
+  const playerNameInput = screen.getByLabelText(
+    "Player names, separated by comma",
+  );
+
   const button = screen.getByRole("button", { name: "Create game" });
+
+  await user.type(playerNameInput, "Pia, Ina");
+
   await user.click(button);
+  expect(handleCreateGame).not.toHaveBeenCalled();
+
+  await user.type(gameNameInput, "Frogger");
+  await user.clear(playerNameInput);
+  await user.click(button);
+  expect(handleCreateGame).not.toHaveBeenCalled();
 });

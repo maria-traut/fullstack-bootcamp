@@ -3,14 +3,14 @@ import Navigation from ".";
 
 jest.mock("next/router", () => ({
   useRouter() {
-    return { pathname: jest.fn() };
+    return { pathname: "/" };
   },
 }));
 
 test("renders with two links 'Play' and 'History'", () => {
   render(<Navigation />);
   const playLink = screen.getByRole("link", { name: "Play" });
-  expect(playLink).toBeInTheDocment();
+  expect(playLink).toBeInTheDocument();
   const historyLink = screen.getByRole("link", { name: "History" });
-  expect(historyLink).toBeInTheDocment();
+  expect(historyLink).toBeInTheDocument();
 });
