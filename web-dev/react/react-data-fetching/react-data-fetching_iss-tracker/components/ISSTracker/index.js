@@ -4,7 +4,7 @@ import Map from "../Map/index";
 import useSWR from "swr";
 
 const URL = "https://api.wheretheiss.at/v1/satellites/25544";
-
+//const fetcher = (...args) => fetch(...args).then((res) => res.json());
 const fetcher = async (url) => {
   const res = await fetch(url);
   // If the status code is not in the range 200-299,
