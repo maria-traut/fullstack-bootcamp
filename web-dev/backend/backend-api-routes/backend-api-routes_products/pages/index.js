@@ -13,3 +13,15 @@ export default function HomePage() {
     </ul>
   );
 }
+
+// JSON.stringify for the return of one complete object
+// <pre> meaning preformatted text)
+// null and 2 for styling
+
+/*
+ return (
+<pre>
+      {JSON.stringify(products, null, 2)}
+    </pre>
+  );
+  */
