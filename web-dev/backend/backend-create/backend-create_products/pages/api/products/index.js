@@ -11,5 +11,11 @@ export default async function handler(request, response) {
     return;
   }
 
+  if (request.method === "POST") {
+    const productData = request.body;
+    await Product.create(productData);
+    return response.status(201).json({ status: "Product created" });
+  }
+
   response.status(405).json({ status: "Method not allowed." });
 }
