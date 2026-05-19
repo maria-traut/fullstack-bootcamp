@@ -12,14 +12,15 @@ export default function ProductList() {
   if (!data) {
     return;
   }
+  console.log(data[0].reviews);
 
   return (
     <>
       <StyledHeading>Available Fishes</StyledHeading>
       <StyledList>
         {data.map((product) => (
-          <li key={product.id}>
-            <StyledLink href={`/${product.id}`}>{product.name}</StyledLink>
+          <li key={product._id}>
+            <StyledLink href={`/${product._id}`}>{product.name}</StyledLink>
           </li>
         ))}
       </StyledList>
