@@ -12,7 +12,7 @@ export default function ProductList() {
   if (!data) {
     return;
   }
-  console.log(data[0].reviews);
+  console.log("review", data[1].reviews);
 
   return (
     <>
