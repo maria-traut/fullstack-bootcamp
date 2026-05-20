@@ -18,10 +18,11 @@ export default createGlobalStyle`
 
   body {
     display: grid;
-    margin: auto;
+    margin: 0 2rem 3.5rem 2rem;
     font-family: system-ui;
     place-items: center;
     min-height: 100vh;
     max-width: 50rem;
+    background-color: var(--color-water-10);
   }
 `;

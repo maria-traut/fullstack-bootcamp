@@ -7,9 +7,13 @@ export default function HomePage() {
     <>
       <Heading>
         <span role="img" aria-label="A fish">
-          🐠
+          🐠{" "}
         </span>
         Fish Shop
+        <span role="img" aria-label="A fish">
+          {" "}
+          🐠
+        </span>
       </Heading>
       <ProductForm />
       <hr />

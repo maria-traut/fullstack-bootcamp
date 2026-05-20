@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import StyledButton from "@/components/Button";
 import useSWR from "swr";
+import { useId } from "react";
 
-export default function ProductForm() {
+export default function ProductForm({ isEditMode = false }) {
   const { mutate } = useSWR("/api/products");
   async function handleSubmit(event) {
     event.preventDefault();
@@ -18,10 +19,13 @@ export default function ProductForm() {
       mutate();
     }
   }
+  const ageInputId = useId();
 
   return (
     <StyledForm onSubmit={handleSubmit}>
-      <StyledHeading>Add a new Fish</StyledHeading>
+      <StyledHeading>
+        {isEditMode ? "Edit the fish" : "Add a new Fish"}
+      </StyledHeading>
       <StyledLabel htmlFor="name">
         Name:
         <input type="text" id="name" name="name" />
@@ -42,7 +46,53 @@ export default function ProductForm() {
           <option value="GBP">GBP</option>
         </select>
       </StyledLabel>
-      <StyledButton type="submit">Submit</StyledButton>
+      <hr />
+      <StyledLabel>
+        First met:{" "}
+        <input name="myInput" defaultValue="Tell me where you met this fish." />
+      </StyledLabel>
+      <p>
+        Characteristics:{" "}
+        <label>
+          <input type="checkbox" name="myCheckbox" defaultChecked={true} />
+          hungry
+        </label>
+        <label>
+          <input type="checkbox" name="myCheckbox" />
+          foolish
+        </label>
+        <label>
+          <input type="checkbox" name="myCheckbox" />
+          super sweet
+        </label>
+      </p>
+      <p>
+        Fitness Range:{" "}
+        <label>
+          <input
+            type="radio"
+            name="myRadio"
+            value="option1"
+            defaultChecked={true}
+          />
+          lame
+        </label>
+        <label>
+          <input type="radio" name="myRadio" value="option2" />
+          fit
+        </label>
+        <label>
+          <input type="radio" name="myRadio" value="option3" />
+          wow
+        </label>
+      </p>
+      <StyledLabel htmlFor={ageInputId}>
+        Expected lifespan:
+        <input id={ageInputId} name="age" type="number" />
+      </StyledLabel>
+      <StyledButton type="submit">
+        {isEditMode ? "Update" : "Submit"}
+      </StyledButton>
     </StyledForm>
   );
 }
