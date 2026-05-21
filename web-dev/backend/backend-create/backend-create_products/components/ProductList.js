@@ -18,9 +18,9 @@ export default function ProductList() {
       <StyledHeading>Available Fishes</StyledHeading>
       <StyledList>
         {data.map((product) => (
-          <li key={product._id}>
+          <StyledListItem key={product._id}>
             <StyledLink href={`/${product._id}`}>{product.name}</StyledLink>
-          </li>
+          </StyledListItem>
         ))}
       </StyledList>
     </>
@@ -38,4 +38,9 @@ const StyledList = styled.ul`
   gap: 1rem;
   justify-items: center;
   padding: 0;
+`;
+
+const StyledListItem = styled.li`
+  box-shadow: 0px 1px 5px -2px var(--color-granite);
+  border-radius: 10px;
 `;
