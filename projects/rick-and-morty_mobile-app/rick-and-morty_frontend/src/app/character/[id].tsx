@@ -1,7 +1,8 @@
+import CharacterCard from "@/components/CharacterCard";
 import { Character } from "@/types/character.types";
 import { useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
-import { ActivityIndicator, Image, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, Text } from "react-native";
 import { API_URL } from "../../constants/api";
 
 export default function CharacterDetails() {
@@ -36,35 +37,5 @@ export default function CharacterDetails() {
     return <Text>{error ?? "Character not found"}</Text>;
   }
 
-  return (
-    <View style={styles.card}>
-      <Image source={{ uri: character.image }} style={styles.image} />
-      <Text style={styles.name}>{character.name}</Text>
-      <Text style={styles.status}>{character.status}</Text>
-      <Text>{character.species}</Text>
-    </View>
-  );
+  return <CharacterCard character={character} style={{ margin: 16 }} />;
 }
-
-const styles = StyleSheet.create({
-  card: {
-    padding: 15,
-    margin: 10,
-    borderRadius: 12,
-    backgroundColor: "#c6eed0",
-    alignItems: "center",
-  },
-  image: {
-    width: 300,
-    height: 300,
-    borderRadius: 150,
-  },
-  name: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginTop: 10,
-  },
-  status: {
-    fontStyle: "italic",
-  },
-});

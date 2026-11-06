@@ -1,9 +1,10 @@
 import type { Character } from "@/types/character.types";
+import { router } from "expo-router";
 import { useEffect, useState } from "react";
 import { ActivityIndicator, FlatList, Text } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import CharacterCard from "../components/CharacterCard";
-import { API_URL } from "../constants/api";
+import CharacterCard from "../../components/CharacterCard";
+import { API_URL } from "../../constants/api";
 
 export default function CharacterList() {
   const insets = useSafeAreaInsets();
@@ -39,10 +40,22 @@ export default function CharacterList() {
 
   return (
     <FlatList
-      contentContainerStyle={{ paddingBottom: insets.bottom }}
+      contentContainerStyle={{
+        padding: 12,
+        gap: 12,
+        paddingBottom: insets.bottom,
+      }}
       data={characters}
       keyExtractor={(item) => item.id.toString()}
-      renderItem={({ item }) => <CharacterCard character={item} />}
+      numColumns={2}
+      columnWrapperStyle={{ gap: 12 }}
+      renderItem={({ item }) => (
+        <CharacterCard
+          character={item}
+          style={{ flex: 1, maxWidth: "48%" }}
+          onPress={() => router.push(`/character/${item.id}`)}
+        />
+      )}
     />
   );
 }
