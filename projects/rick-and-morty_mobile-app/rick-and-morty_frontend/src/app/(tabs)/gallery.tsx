@@ -20,7 +20,7 @@ export default function CharacterList() {
           throw new Error(`Request failed with status ${response.status}`);
         }
         const json = await response.json();
-        setCharacters(json.results);
+        setCharacters(json);
       } catch (error) {
         setError(error instanceof Error ? error.message : "Unknown error");
       } finally {
