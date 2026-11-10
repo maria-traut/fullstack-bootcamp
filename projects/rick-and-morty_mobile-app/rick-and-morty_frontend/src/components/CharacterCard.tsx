@@ -1,3 +1,4 @@
+import ActionMenu, { type ActionMenuItem } from "@/components/ActionMenu";
 import { Colors } from "@/constants/colors";
 import type { Character } from "@/types/character.types";
 import {
@@ -15,6 +16,8 @@ type Props = {
   character: Character;
   variant?: "grid" | "detail";
   onPress?: () => void;
+  onEdit?: () => void;
+  onDelete?: () => void;
   style?: StyleProp<ViewStyle>;
 };
 
@@ -28,12 +31,27 @@ export default function CharacterCard({
   character,
   variant = "grid",
   onPress,
+  onEdit,
+  onDelete,
   style,
 }: Props) {
   const isDetail = variant === "detail";
   const scheme = useColorScheme();
   const color = Colors[scheme === "dark" ? "dark" : "light"];
   const text = { color: color.cardText };
+
+  const menuItems: ActionMenuItem[] = [];
+  if (onEdit) {
+    menuItems.push({ label: "Edit", icon: "create-outline", onPress: onEdit });
+  }
+  if (onDelete) {
+    menuItems.push({
+      label: "Delete",
+      icon: "trash-outline",
+      onPress: onDelete,
+      destructive: true,
+    });
+  }
 
   return (
     <Pressable
@@ -49,10 +67,12 @@ export default function CharacterCard({
         style,
       ]}
     >
-      <Image
-        source={{ uri: character.image }}
-        style={isDetail ? styles.imageDetail : styles.image}
-      />
+      <View style={isDetail ? styles.imageWrapperDetail : undefined}>
+        <Image source={{ uri: character.image }} style={styles.image} />
+        {menuItems.length > 0 && (
+          <ActionMenu items={menuItems} style={styles.menuButton} />
+        )}
+      </View>
       <View style={isDetail ? styles.bodyDetail : styles.body}>
         <Text
           style={[isDetail ? styles.nameDetail : styles.name, text]}
@@ -60,7 +80,6 @@ export default function CharacterCard({
         >
           {character.name}
         </Text>
-
         <View style={styles.statusRow}>
           <View
             style={[
@@ -77,11 +96,13 @@ export default function CharacterCard({
         </View>
 
         <Text style={[styles.label, text]}>Gender</Text>
-        <Text style={[styles.value, text]}>{character.gender}</Text>
+        <Text style={[styles.value, text]}>
+          {character.gender ?? "unknown"}
+        </Text>
 
         <Text style={[styles.label, text]}>Last known location</Text>
         <Text style={[styles.value, text]} numberOfLines={2}>
-          {character.location.name}
+          {character.location?.name ?? "unknown"}
         </Text>
       </View>
     </Pressable>
@@ -95,13 +116,8 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   image: { width: "100%", aspectRatio: 1 },
-  imageDetail: {
-    width: 280,
-    aspectRatio: 1,
-    alignSelf: "center",
-    marginTop: 20,
-    borderRadius: 12,
-  },
+  imageWrapperDetail: { alignSelf: "center" },
+  menuButton: { position: "absolute", top: 8, right: 8 },
   bodyDetail: { paddingHorizontal: 20, paddingTop: 16, paddingBottom: 24 },
   nameDetail: { fontSize: 26, fontWeight: "700" },
   body: { paddingHorizontal: 10, paddingTop: 8, paddingBottom: 12 },

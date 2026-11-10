@@ -1,3 +1,4 @@
+import { SwitchColors } from "@/constants/colors";
 import { useTheme } from "expo-router";
 import {
   Appearance,
@@ -18,6 +19,9 @@ export default function Settings() {
       <View style={styles.row}>
         <Text style={[styles.label, { color: colors.text }]}>Dark Mode</Text>
         <Switch
+          trackColor={{ false: SwitchColors.trackOff, true: SwitchColors.trackOn }}
+          thumbColor={isDark ? SwitchColors.thumbOn : SwitchColors.thumbOff}
+          ios_backgroundColor={SwitchColors.iosBackground}
           value={isDark}
           onValueChange={(value) =>
             Appearance.setColorScheme(value ? "dark" : "light")

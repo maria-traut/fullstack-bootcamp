@@ -12,3 +12,11 @@ export const Colors = {
     cardGlow: "rgba(63, 220, 122, 0.25)",
   },
 };
+
+export const SwitchColors = {
+  trackOff: "#767577",
+  trackOn: "#316d3f",
+  thumbOff: "#f4f3f4",
+  thumbOn: "#70c485",
+  iosBackground: "#3e3e3e",
+};

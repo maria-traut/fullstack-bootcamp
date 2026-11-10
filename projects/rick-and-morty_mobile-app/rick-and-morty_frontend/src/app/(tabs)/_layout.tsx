@@ -1,4 +1,4 @@
-import { Ionicons } from "@expo/vector-icons";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import { Tabs } from "expo-router/js-tabs";
 
 export default function TabLayout() {
@@ -9,7 +9,7 @@ export default function TabLayout() {
         options={{
           title: "Home",
           tabBarIcon: ({ color }) => (
-            <Ionicons name="home" size={28} color={color} />
+            <Ionicons name="home" size={28} color={color as string} />
           ),
         }}
       />
@@ -18,7 +18,17 @@ export default function TabLayout() {
         options={{
           title: "Gallery",
           tabBarIcon: ({ color }) => (
-            <Ionicons name="images" size={28} color={color} />
+            <Ionicons name="images" size={28} color={color as string} />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="new"
+        options={{
+          title: "New",
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="create" size={28} color={color as string} />
           ),
         }}
       />
@@ -27,7 +37,7 @@ export default function TabLayout() {
         options={{
           title: "Settings",
           tabBarIcon: ({ color }) => (
-            <Ionicons name="settings" size={28} color={color} />
+            <Ionicons name="settings" size={28} color={color as string} />
           ),
         }}
       />
