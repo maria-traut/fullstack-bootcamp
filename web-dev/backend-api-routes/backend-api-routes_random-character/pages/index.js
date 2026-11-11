@@ -6,9 +6,9 @@ export default function HomePage() {
     `/api/random-character`,
     fetcher,
   );
-  const { firstName, lastName, twitterName, geohash } = character;
   if (isLoading) return <p>Loading ...</p>;
   if (!character) return <p>Error</p>;
+  const { firstName, lastName, twitterName, geohash } = character;
   return (
     <>
       <h1>First Name: {firstName}</h1>
