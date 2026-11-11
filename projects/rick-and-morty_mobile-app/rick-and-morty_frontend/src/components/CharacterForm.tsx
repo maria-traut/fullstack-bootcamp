@@ -1,7 +1,14 @@
 import type { Character } from "@/types/character.types";
 import { useTheme } from "expo-router";
 import { useState } from "react";
-import { View, Text, TextInput, Pressable, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  Pressable,
+  StyleSheet,
+  Image,
+} from "react-native";
 import Camera from "./Camera";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
@@ -109,7 +116,21 @@ export default function CharacterForm({
           )}
         </Pressable>
       </View>
-      {isTakingPhoto && <Camera />}
+      {isTakingPhoto && (
+        <Camera
+          onPhotoTaken={(uri) => {
+            setImage(uri);
+            setIsTakingPhoto(false);
+          }}
+        />
+      )}
+      {!isTakingPhoto && image ? (
+        <Image
+          source={{ uri: image }}
+          style={styles.preview}
+          resizeMode="cover"
+        />
+      ) : null}
       <Pressable
         onPress={handleSubmit}
         disabled={isSubmitting}
@@ -150,6 +171,13 @@ const styles = StyleSheet.create({
   iconButton: {
     paddingHorizontal: 12,
     marginRight: 10,
+  },
+  preview: {
+    width: 120,
+    height: 120,
+    borderRadius: 10,
+    marginHorizontal: 10,
+    marginBottom: 10,
   },
   intro: { fontSize: 16, margin: 10 },
   buttonText: { fontWeight: "bold", color: "#000" },

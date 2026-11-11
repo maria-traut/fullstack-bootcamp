@@ -1,15 +1,23 @@
+import { Asset, usePermissions } from "expo-media-library";
 import { Pressable, StyleSheet, Switch, Text, Image, View } from "react-native";
 import { useRef, useState } from "react";
 import { CameraView, useCameraPermissions } from "expo-camera";
 import { useTheme } from "expo-router";
 import { SwitchColors } from "@/constants/colors";
 
-export default function Camera() {
+type Props = {
+  onPhotoTaken?: (uri: string) => void;
+};
+
+export default function Camera({ onPhotoTaken }: Props) {
   const { colors } = useTheme();
   const [isEnabled, setIsEnabled] = useState(false);
   const [cameraPermission, requestCameraPermission] = useCameraPermissions();
   const cameraRef = useRef<CameraView>(null);
   const [photoUri, setPhotoUri] = useState<string | null>(null);
+  const [mediaPermission, requestMediaPermission] = usePermissions({
+    granularPermissions: ["photo"],
+  });
 
   if (!cameraPermission) return null;
   if (!cameraPermission.granted) {
@@ -37,9 +45,25 @@ export default function Camera() {
 
   async function handleTakePicture() {
     try {
-      const photo = await cameraRef.current?.takePictureAsync();
+      const photo = await cameraRef.current?.takePictureAsync({
+        quality: 0.7, // Compress slightly for better performance
+        base64: false,
+        exif: false,
+        shutterSound: false,
+      });
       if (photo?.uri) {
         setPhotoUri(photo.uri);
+        if (!mediaPermission?.granted) {
+          const { granted } = await requestMediaPermission();
+          if (!granted) {
+            console.warn("Media library permission denied, photo not saved");
+            onPhotoTaken?.(photo.uri);
+            return;
+          }
+        }
+        const asset = await Asset.create(photo.uri); // copies the photo into the phone's gallery and returns an Asset object
+        console.log("Photo saved to gallery");
+        onPhotoTaken?.(await asset.getUri()); // asks for the gallery adress of that photo
       }
     } catch (error) {
       console.error("Error taking photo:", error);
@@ -56,8 +80,13 @@ export default function Camera() {
       <View style={styles.controlsRow}>
         <View style={styles.switchSide}>
           <Switch
-            trackColor={{ false: SwitchColors.trackOff, true: SwitchColors.trackOn }}
-            thumbColor={isEnabled ? SwitchColors.thumbOn : SwitchColors.thumbOff}
+            trackColor={{
+              false: SwitchColors.trackOff,
+              true: SwitchColors.trackOn,
+            }}
+            thumbColor={
+              isEnabled ? SwitchColors.thumbOn : SwitchColors.thumbOff
+            }
             ios_backgroundColor={SwitchColors.iosBackground}
             onValueChange={toggleSwitch}
             value={isEnabled}
