@@ -4,7 +4,7 @@ description: Run tests and linter for openai-sdk-chat, then commit staged change
 disable-model-invocation: true
 ---
 
-Run every command from the project directory (`ai/openai-sdk/openai-sdk-chat`, the folder containing this `.claude/`). Follow these steps in order. Stop immediately if a step fails.
+Run every command from the project directory (`web-dev-advanced/ai_openai-sdk/openai-sdk-chat`, the folder containing this `.claude/`). Follow these steps in order. Stop immediately if a step fails.
 
 1. Run the test suite (`npm run test -- --run`).
    - If any test fails: report the failures and ABORT. Do not commit.
