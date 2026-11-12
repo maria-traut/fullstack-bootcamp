@@ -13,3 +13,12 @@ claude-edits.log
 *.sqlite-shm
 *.sqlite-wal
 
+# build caches and generated files
+# (dist/ is NOT ignored: some HTML challenges load their JavaScript from it)
+.next/
+.expo/
+coverage/
+*.tsbuildinfo
+next-env.d.ts
+*.log
+
