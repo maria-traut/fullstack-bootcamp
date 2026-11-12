@@ -3,3 +3,13 @@ node_modules/
 
 claude-edits.log
 
+# environment files (may contain passwords) – example files stay tracked
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# temporary SQLite files (created while the database is open)
+*.sqlite-shm
+*.sqlite-wal
+
