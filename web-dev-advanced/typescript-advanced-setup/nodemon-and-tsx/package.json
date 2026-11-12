@@ -9,11 +9,12 @@
   "scripts": {
     "build:watch": "tsc --watch",
     "start:dev": "nodemon dist/main.js",
-    "dev": "concurrently \"npm run build:watch\" \"npm run start:dev\""
+    "dev": "concurrently \"pnpm build:watch\" \"pnpm start:dev\""
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
     "nodemon": "^3.0.1",
     "tsx": "^4.23.1"
-  }
+  },
+  "packageManager": "pnpm@12.18.0"
 }
