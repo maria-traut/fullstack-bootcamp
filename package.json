@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "lint": "npm --prefix ai/openai-sdk/openai-sdk-chat run lint"
+    "lint": "npm --prefix ai_openai-sdk/openai-sdk-chat run lint"
   },
   "devDependencies": {
     "@testing-library/dom": "^10.4.2",
