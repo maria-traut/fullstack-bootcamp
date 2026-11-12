@@ -20,7 +20,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "echo \"$(date): wrote $(jq -r '.tool_input.file_path' | sed 's|.*/web-advanced-bootcamp/|web-advanced-bootcamp/|')\" >> \"$CLAUDE_PROJECT_DIR/claude-edits.log\""
+            "command": "echo \"$(date): wrote $(jq -r '.tool_input.file_path' | sed 's|.*/web-dev-advanced/|web-dev-advanced/|')\" >> \"$CLAUDE_PROJECT_DIR/claude-edits.log\""
           }
         ]
       }
