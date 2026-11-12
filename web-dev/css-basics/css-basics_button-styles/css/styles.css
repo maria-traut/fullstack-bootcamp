@@ -1,0 +1,53 @@
+/* Please scroll down to the start of your exercise! */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+}
+
+section {
+  background-color: lemonchiffon;
+  display: grid;
+  place-items: center;
+}
+
+.skyblue {
+  background-color: skyblue;
+}
+
+button {
+  background-color: white;
+  padding: 8px 25px;
+}
+
+/* Your exercise starts here. */
+
+/* Add your CSS styles below this line. Feel free to replace the comments with your code. 
+Make sure not to put your code into the comments, because then nothing will happen. */
+
+.button1 {
+  border-radius: 50%;
+  border: 10px solid hotpink;
+  color: hotpink;
+}
+
+.button2 {
+  font-size: 50px;
+  background: hotpink;
+  padding: 50px;
+  border: 50px solid lightsalmon;
+}
+
+.button3 {
+  font-size: 10px;
+  font-family: "Courier New"
+}
+
+.button4 {
+  box-shadow: rgba(253, 81, 2, 0.4) 0px 7px 10px 0px;#
+}
