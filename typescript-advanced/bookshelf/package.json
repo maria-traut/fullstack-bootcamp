@@ -1,0 +1,13 @@
+{
+  "name": "typescript-advanced",
+  "version": "1.0.0",
+  "description": "Build the BookShelf type layer You are building the type layer for a library management API. Your goal is to define a complete set of types in a declaration file, then use them in a service module.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module"
+}
