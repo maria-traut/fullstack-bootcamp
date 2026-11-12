@@ -32,5 +32,6 @@
   "description": "React Immutable State: Form",
   "nf": {
     "template": "next"
-  }
+  },
+  "packageManager": "pnpm@12.18.0"
 }

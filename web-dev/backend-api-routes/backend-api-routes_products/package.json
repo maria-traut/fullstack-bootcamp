@@ -31,5 +31,6 @@
   "description": "Backend Api Routes: Products",
   "nf": {
     "template": "next"
-  }
+  },
+  "packageManager": "pnpm@12.18.0"
 }
