@@ -17,5 +17,7 @@ lowercaseButton.addEventListener("click", () => {
 });
 
 switchButton.addEventListener("click", () => {
-  button.classList.toggle = "form__input";
+  const firstValue = firstInput.value;
+  firstInput.value = secondInput.value;
+  secondInput.value = firstValue;
 });
