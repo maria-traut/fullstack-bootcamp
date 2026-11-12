@@ -13,5 +13,6 @@
   "type": "commonjs",
   "dependencies": {
     "redis": "^6.2.1"
-  }
+  },
+  "packageManager": "pnpm@12.18.0"
 }

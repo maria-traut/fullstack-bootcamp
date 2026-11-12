@@ -12,5 +12,6 @@
   "type": "commonjs",
   "dependencies": {
     "tsx": "^4.23.12"
-  }
+  },
+  "packageManager": "pnpm@12.18.0"
 }

@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "lint": "npm --prefix ai_openai-sdk/openai-sdk-chat run lint"
+    "lint": "pnpm --dir ai_openai-sdk/openai-sdk-chat lint"
   },
   "devDependencies": {
     "@testing-library/dom": "^10.4.2",
@@ -9,5 +9,6 @@
     "jsdom": "^30.1.1",
     "vite-tsconfig-paths": "^6.1.1",
     "vitest": "^5.0.2"
-  }
+  },
+  "packageManager": "pnpm@12.18.0"
 }
