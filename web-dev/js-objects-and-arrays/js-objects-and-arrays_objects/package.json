@@ -4,19 +4,20 @@
   "description": "Exercise to objects",
   "main": "index.js",
   "scripts": {
-    "start": "npx -y live-server@latest --port=3000",
-    "lint": "npx -y eslint@latest .",
-    "test": "NODE_OPTIONS=--experimental-vm-modules npx -y jest@latest --watchAll"
+    "start": "pnpm dlx live-server@latest --port=3000",
+    "lint": "pnpm dlx eslint@latest .",
+    "test": "NODE_OPTIONS=--experimental-vm-modules pnpm dlx jest@latest --watchAll"
   },
   "devDependencies": {
     "@babel/core": "^7.22.5",
     "@types/jest": "^29.5.2",
-    "eslint-plugin-jest": "^27.2.2",
     "eslint": "^8.43.0",
+    "eslint-plugin-jest": "^27.2.2",
     "jest": "^29.2.2"
   },
   "type": "module",
   "nf": {
     "template": "js"
-  }
+  },
+  "packageManager": "pnpm@12.18.0"
 }

@@ -30,5 +30,6 @@
   "description": "React Global State: Lights",
   "nf": {
     "template": "next"
-  }
+  },
+  "packageManager": "pnpm@12.18.0"
 }

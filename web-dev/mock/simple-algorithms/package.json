@@ -9,5 +9,6 @@
   "author": "J-1000",
   "dependencies": {
     "jest": "^29.7.0"
-  }
+  },
+  "packageManager": "pnpm@12.18.0"
 }

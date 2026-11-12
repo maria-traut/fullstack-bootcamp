@@ -30,5 +30,6 @@
   "description": "Next.js Dynamic Routes: Lord of the Rings Dynamic Routes",
   "nf": {
     "template": "next"
-  }
+  },
+  "packageManager": "pnpm@12.18.0"
 }

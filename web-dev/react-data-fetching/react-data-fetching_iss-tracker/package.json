@@ -31,5 +31,6 @@
   "description": "React Data Fetching: ISS Tracker",
   "nf": {
     "template": "next"
-  }
+  },
+  "packageManager": "pnpm@12.18.0"
 }
