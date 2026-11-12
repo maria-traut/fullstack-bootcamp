@@ -2,6 +2,8 @@
   "name": "rick-and-morty-mobile-app",
   "private": true,
   "scripts": {
-    "dev": "trap 'trap - INT TERM EXIT; kill 0' INT TERM EXIT; npm run start:dev --prefix rick-and-morty_backend & npm start --prefix rick-and-morty_frontend"
-  }
+    "install:all": "pnpm --dir rick-and-morty_backend install && pnpm --dir rick-and-morty_frontend install",
+    "dev": "trap 'trap - INT TERM EXIT; kill 0' INT TERM EXIT; pnpm --dir rick-and-morty_backend start:dev & pnpm --dir rick-and-morty_frontend start"
+  },
+  "packageManager": "pnpm@12.18.0"
 }

@@ -43,7 +43,9 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "expo-doctor": "npm_config_force=true pnpm dlx --package expo-doctor --package @expo/env expo-doctor"
   },
-  "private": true
+  "private": true,
+  "packageManager": "pnpm@12.18.0"
 }
