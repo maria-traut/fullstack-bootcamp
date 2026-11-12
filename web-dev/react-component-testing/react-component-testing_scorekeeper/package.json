@@ -31,5 +31,6 @@
   "description": "React Component Testing: Scorekeeper",
   "nf": {
     "template": "next"
-  }
+  },
+  "packageManager": "pnpm@12.18.0"
 }

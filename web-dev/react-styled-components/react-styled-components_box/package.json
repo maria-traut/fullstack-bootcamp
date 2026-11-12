@@ -29,5 +29,6 @@
   "description": "Styled Components: Box with Hover",
   "nf": {
     "template": "next"
-  }
+  },
+  "packageManager": "pnpm@12.18.0"
 }

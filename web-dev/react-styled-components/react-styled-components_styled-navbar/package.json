@@ -29,5 +29,6 @@
   "description": "react-styled-components: styled navbar",
   "nf": {
     "template": "next"
-  }
+  },
+  "packageManager": "pnpm@12.18.0"
 }

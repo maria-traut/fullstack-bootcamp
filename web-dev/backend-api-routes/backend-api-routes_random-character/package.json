@@ -32,5 +32,6 @@
   "description": "Backend Api Routes: Random Character",
   "nf": {
     "template": "next"
-  }
+  },
+  "packageManager": "pnpm@12.18.0"
 }
